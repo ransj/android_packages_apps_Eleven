@@ -35,6 +35,8 @@ import com.cyanogenmod.eleven.provider.SongPlayCount;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import os.ransj.eleven.Compat;
+
 /**
  * The playlistWorkerTask will load either the top artist image or the cover art (a combination of
  * up to 4 of the top song's album images) into the designated ImageView.  If not enough time has
@@ -345,7 +347,7 @@ public class PlaylistWorkerTask extends BitmapWorkerTask<Void, Void, TransitionD
                 combinedCanvas.drawBitmap(loadedBitmaps.get(3), null,
                         new Rect(width / 2, height / 2, width, height), null);
 
-                combinedCanvas.release();
+                Compat.Canvas_release(combinedCanvas);
                 combinedCanvas = null;
                 bitmap = combinedBitmap;
             }

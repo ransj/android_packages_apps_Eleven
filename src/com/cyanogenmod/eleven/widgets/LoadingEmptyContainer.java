@@ -23,6 +23,8 @@ import android.widget.FrameLayout;
 
 import com.cyanogenmod.eleven.R;
 
+import os.ransj.eleven.Compat;
+
 /**
  * This class is the default empty state view for most listviews/fragments
  * It allows the ability to set a main text, a main highlight text and a secondary text
@@ -63,7 +65,7 @@ public class LoadingEmptyContainer extends FrameLayout {
     public void showLoading() {
         hideAll();
 
-        if (!mHandler.hasCallbacks(mShowLoadingRunnable)) {
+        if (!Compat.Handler_hasCallbacks(mHandler, mShowLoadingRunnable)) {
             mHandler.postDelayed(mShowLoadingRunnable, LOADING_DELAY);
         }
     }

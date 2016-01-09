@@ -25,7 +25,7 @@ import com.google.common.annotations.VisibleForTesting;
 
 import java.util.Locale;
 
-import libcore.icu.ICU;
+import os.ransj.eleven.Compat;
 
 public class LocaleSetManager {
     private static final String TAG = LocaleSetManager.class.getSimpleName();
@@ -57,9 +57,9 @@ public class LocaleSetManager {
         // if our icu version has changed, return true
         final String storedICUversion = PropertiesStore.getInstance(mContext)
                 .getProperty(PropertiesStore.DbProperties.ICU_VERSION);
-        if (!ICU.getIcuVersion().equals(storedICUversion)) {
+        if (!Compat.ICU_getIcuVersion().equals(storedICUversion)) {
             Log.d(TAG, "ICU version has changed from: " + storedICUversion + " to "
-                    + ICU.getIcuVersion());
+                    + Compat.ICU_getIcuVersion());
             return true;
         }
 

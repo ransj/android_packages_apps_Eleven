@@ -38,7 +38,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import libcore.icu.ICU;
+import os.ransj.eleven.Compat;
+
 
 /**
  * Because sqlite localized collator isn't sufficient, we need to store more specialized logic
@@ -179,7 +180,7 @@ public class LocalizedStore {
             // Update the ICU version used to generate the locale derived data
             // so we can tell when we need to rebuild with new ICU versions.
             PropertiesStore.getInstance(mContext).storeProperty(
-                    PropertiesStore.DbProperties.ICU_VERSION, ICU.getIcuVersion());
+                    PropertiesStore.DbProperties.ICU_VERSION, Compat.ICU_getIcuVersion());
             PropertiesStore.getInstance(mContext).storeProperty(PropertiesStore.DbProperties.LOCALE,
                     locales.toString());
 

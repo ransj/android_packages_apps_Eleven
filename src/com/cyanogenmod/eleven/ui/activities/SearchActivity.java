@@ -77,6 +77,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.TreeSet;
 
+import os.ransj.eleven.Compat;
+
 import static android.view.View.OnTouchListener;
 import static com.cyanogenmod.eleven.utils.MusicUtils.mService;
 
@@ -311,7 +313,7 @@ public class SearchActivity extends FragmentActivity implements
             mTopLevelSearch = false;
 
             // get the search type to filter by
-            int type = getIntent().getIntExtra(SearchManager.SEARCH_MODE, -1);
+            int type = getIntent().getIntExtra(Compat.SearchManager_SEARCH_MODE(), -1);
             if (type >= 0 && type < ResultType.values().length) {
                 mSearchType = ResultType.values()[type];
             }
@@ -561,7 +563,7 @@ public class SearchActivity extends FragmentActivity implements
      */
     public void setLoading() {
         if (mCurrentState != VisibleState.Loading) {
-            if (!mHandler.hasCallbacks(mLoadingRunnable)) {
+            if (!Compat.Handler_hasCallbacks(mHandler, mLoadingRunnable)) {
                 mHandler.postDelayed(mLoadingRunnable, LOADING_DELAY);
             }
         }
@@ -653,7 +655,7 @@ public class SearchActivity extends FragmentActivity implements
             SearchResult item = mAdapter.getTItem(position - 1);
             Intent intent = new Intent(this, SearchActivity.class);
             intent.putExtra(SearchManager.QUERY, mFilterString);
-            intent.putExtra(SearchManager.SEARCH_MODE, item.mType.ordinal());
+            intent.putExtra(Compat.SearchManager_SEARCH_MODE(), item.mType.ordinal());
             startActivity(intent);
         } else {
             SearchResult item = mAdapter.getTItem(position);

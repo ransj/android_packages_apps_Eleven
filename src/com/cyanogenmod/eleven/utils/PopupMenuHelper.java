@@ -17,13 +17,13 @@ package com.cyanogenmod.eleven.utils;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.view.menu.MenuBuilder;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
 import com.android.internal.view.menu.ContextMenuBuilder;
-import com.android.internal.view.menu.MenuBuilder;
 import com.cyanogenmod.eleven.Config;
 import com.cyanogenmod.eleven.R;
 import com.cyanogenmod.eleven.menu.CreateNewPlaylist;
